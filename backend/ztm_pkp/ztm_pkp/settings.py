@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'backend', '0.0.0.0', 'localhost']
 # Application definition
 
 INSTALLED_APPS = [
+    'rest_framework',
     "app.apps.AppConfig", # "app" is the name of the app, "AppConfig" is the name of the class in "app/apps.py
     'django.contrib.admin',
     'django.contrib.auth',
