@@ -7,3 +7,4 @@ services:
     # Mount the local project directory into the container to enable live development
     volumes:
       - ./frontend/ztm-pkp:/usr/src/app
+      - /usr/src/app/node_modules
