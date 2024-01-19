@@ -1,0 +1,9 @@
+services:
+  frontend:
+    build: ./frontend/ztm-pkp
+    # Map port 3000 on the host to port 3000 on the container
+    ports:
+      - "3000:3000"
+    # Mount the local project directory into the container to enable live development
+    volumes:
+      - ./frontend/ztm-pkp:/usr/src/app
