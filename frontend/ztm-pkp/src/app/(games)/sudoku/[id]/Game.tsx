@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import moment from "moment";
 import { GameSection } from "./components/layout/GameSection";
 import { StatusSection } from "./components/layout/StatusSection";
 import { Footer } from "./components/layout/Footer";
@@ -32,7 +31,6 @@ export const Game: React.FC<{}> = () => {
     setGameArray,
     difficulty,
     setDifficulty,
-    setTimeGameStarted,
     fastMode,
     setFastMode,
     cellSelected,
@@ -59,7 +57,6 @@ export const Game: React.FC<{}> = () => {
     setGameArray(temporaryInitArray);
     setSolvedArray(temporarySolvedArray);
     setNumberSelected("0");
-    setTimeGameStarted(moment());
     setCellSelected(-1);
     setHistory([]);
     setWon(false);
