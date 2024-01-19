@@ -46,13 +46,55 @@ function Page({ params }) {
     ctxRef.current.stroke();
   };
 
+  function dataURItoBlob(dataURI) {
+    console.log(dataURI);
+    const byteString = atob(dataURI.split(',')[1]);
+    const ab = new ArrayBuffer(byteString.length);
+    const ia = new Uint8Array(ab);
+  
+    for (let i = 0; i < byteString.length; i++) {
+      ia[i] = byteString.charCodeAt(i);
+    }
+  
+    return new Blob([ab], { type: 'png' }); // Adjust the type as needed
+  }
+
   const saveCanvas = () => {
     const canvas = canvasRef.current;
-    const link = document.createElement("a");
-    link.href = canvas.toDataURL();
-    link.download = "canvas.png";
-    link.click();
+    const dataURL = canvas.toDataURL();
+    const blob = dataURItoBlob(dataURL);
+    console.log(blob);
+
+    // const link = document.createElement("a");
+    // link.href = URL.createObjectURL(blob);
+    // link.download = "canvas.png";
+
+    const formData = new FormData();
+    formData.append('png_id', 'cokolwiek');
+    formData.append('user_id', 6);
+    formData.append('png', blob, 'canvas.png');
+
+    fetch("http://0.0.0.0:8000/app/pngs/", {
+      method: "POST",
+      body: formData,  // Use formData instead of FormData
+      // headers: {
+      //   "Content-Type": "application/json"  // Remove this line
+      // }
+    })
+    .then(response => response.json())
+    .then(data => {
+      // Handle response from the backend
+      console.log(data);
+    })
+    .catch(error => {
+      // Handle error
+      console.error(error);
+    });
   };
+  
+
+
+  
 
   const clearCanvas = () => {
     const canvas = canvasRef.current;
