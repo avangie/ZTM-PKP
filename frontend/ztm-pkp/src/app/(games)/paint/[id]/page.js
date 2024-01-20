@@ -118,11 +118,14 @@ function Page({ params }) {
           width={`1280px`}
           height={`720px`}
         />
-        <button onClick={saveCanvas}>Save as PNG</button>
+        <button  onClick={saveCanvas}>Submit</button>
         <br></br>
         <button onClick={clearCanvas}>Clear</button>
       </div>
-      <div>Siema {params.id} </div>
+      <div>Draw a picture: </div>
+      <p>
+      <h1 type="text">I HAVE NOT SLEPT FOR 24 HOURS</h1>
+    </p>
     </div>
   );
 }
